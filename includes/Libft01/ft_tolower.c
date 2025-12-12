@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smurayam <smurayam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:53:27 by nnnya             #+#    #+#             */
-/*   Updated: 2025/12/12 15:58:48 by nnnya            ###   ########.fr       */
+/*   Created: 2024/10/31 12:44:13 by smurayam          #+#    #+#             */
+/*   Updated: 2024/11/28 03:54:12 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+#include <stdio.h>
 
-#define WIDTH 800
-#define HEIGHT 800
-#define KEY_ESC 65307
+int	ft_tolower(int c)
+{
+	if (65 <= c && c <= 90)
+		c = c + 32;
+	return (c);
+}
+
+// int	main(void)
+// {
+// 	printf("%c\n", ft_tolower('A'));
+// 	printf("%c\n", ft_tolower('A'));
+// 	return (0);
+// }

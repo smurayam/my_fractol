@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smurayam <smurayam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:53:27 by nnnya             #+#    #+#             */
-/*   Updated: 2025/12/12 15:58:48 by nnnya            ###   ########.fr       */
+/*   Created: 2024/10/31 08:30:33 by smurayam          #+#    #+#             */
+/*   Updated: 2024/11/25 01:06:04 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
 
-#define WIDTH 800
-#define HEIGHT 800
-#define KEY_ESC 65307
+int	ft_isascii(int c)
+{
+	return (0 <= c && c <= 127);
+}
+
+// int	main(void)
+// {
+// 	int c;
+// 	c = 20;
+// 	printf("%d\n", (ft_isascii(c)));
+// 	printf("%d\n", isascii(c));
+// }

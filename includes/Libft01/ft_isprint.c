@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smurayam <smurayam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:53:27 by nnnya             #+#    #+#             */
-/*   Updated: 2025/12/12 15:58:48 by nnnya            ###   ########.fr       */
+/*   Created: 2024/10/31 09:00:31 by smurayam          #+#    #+#             */
+/*   Updated: 2024/11/25 01:06:23 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
 
-#define WIDTH 800
-#define HEIGHT 800
-#define KEY_ESC 65307
+int	ft_isprint(int c)
+{
+	return (32 <= c && c <= 126);
+}
+
+// int	main(void)
+// {
+// 	int c;
+// 	c = 30;
+// 	printf("%d\n", (ft_isprint(c)));
+// 	printf("%d\n", (isprint(c)));
+// 	return (0);
+// }

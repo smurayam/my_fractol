@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+        */
+/*   By: smurayam <smurayam@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/12 15:53:27 by nnnya             #+#    #+#             */
-/*   Updated: 2025/12/12 15:58:48 by nnnya            ###   ########.fr       */
+/*   Created: 2024/11/24 07:13:06 by smurayam          #+#    #+#             */
+/*   Updated: 2024/11/24 23:30:59 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+#include <unistd.h>
 
-#define WIDTH 800
-#define HEIGHT 800
-#define KEY_ESC 65307
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+// int	main(void)
+// {
+// 	ft_putchar_fd('a', 1);
+// 	ft_putchar_fd('\n', 1);
+// 	ft_putchar_fd('b', 2);
+// 	return (0);
+// }
