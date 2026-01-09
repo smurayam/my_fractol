@@ -6,14 +6,14 @@
 #    By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/09 21:54:49 by nnnya             #+#    #+#              #
-#    Updated: 2026/01/09 21:54:53 by nnnya            ###   ########.fr        #
+#    Updated: 2026/01/09 22:10:28 by nnnya            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        = fractol
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
-MLX_PATH    = minilibx-linux
+MLX_PATH    = includes/minilibx-linux
 MLX_NAME    = libmlx.a
 MLX_LIB     = $(MLX_PATH)/$(MLX_NAME)
 
