@@ -6,14 +6,12 @@
 /*   By: smurayam <smurayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 21:54:33 by nnnya             #+#    #+#             */
-/*   Updated: 2026/01/20 20:20:45 by smurayam         ###   ########.fr       */
+/*   Updated: 2026/01/20 20:31:23 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* main.c */
 #include "includes/fractol.h"
 
-// 簡単なエラーメッセージ表示と終了
 static void	print_error_and_exit(void)
 {
 	ft_putstr_fd("Usage: ./fractol mandelbrot\n", 1);
@@ -21,7 +19,6 @@ static void	print_error_and_exit(void)
 	exit(1);
 }
 
-// 簡易的なatof (文字列からdoubleへ変換)
 double	ft_atof(char *s)
 {
 	double	val;
@@ -65,7 +62,7 @@ static void	parse_args(int argc, char **argv, t_data *data)
 		}
 		else
 		{
-			data->julia_cx = -0.7; // デフォルト値
+			data->julia_cx = -0.7;
 			data->julia_cy = 0.27015;
 		}
 	}
@@ -75,14 +72,12 @@ static void	parse_args(int argc, char **argv, t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
-	// 初期値設定 (0クリアなど安全策)
 	data.min_r = -2.0;
 	data.max_r = 2.0;
 	data.min_i = -2.0;
-	data.max_i = 2.0; // アスペクト比に合わせて調整推奨
-
+	data.max_i = 2.0;
 	parse_args(argc, argv, &data);
 	data_init(&data);
 	render(&data);

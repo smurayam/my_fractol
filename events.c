@@ -6,11 +6,10 @@
 /*   By: smurayam <smurayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:21:32 by smurayam          #+#    #+#             */
-/*   Updated: 2026/01/20 20:21:36 by smurayam         ###   ########.fr       */
+/*   Updated: 2026/01/20 20:30:47 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* events.c (または main.c に追記、ただし分割推奨) */
 #include "includes/fractol.h"
 
 void	data_init(t_data *data)
@@ -24,17 +23,16 @@ void	data_init(t_data *data)
 	data->img.img_ptr = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.img_ptr, &data->img.bpp,
 			&data->img.line_len, &data->img.endian);
-	// フックの設定
-	mlx_hook(data->win_ptr, 17, 0, handle_close, data); // 17: DestroyNotify
+	mlx_hook(data->win_ptr, 17, 0, handle_close, data);
 	mlx_key_hook(data->win_ptr, handle_keypress, data);
-	mlx_mouse_hook(data->win_ptr, handle_mouse, data); // マウスホイール用
+	mlx_mouse_hook(data->win_ptr, handle_mouse, data);
 }
 
 int	handle_close(t_data *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	mlx_destroy_display(data->mlx_ptr); // Linux版MinilibXの場合
+	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	exit(0);
 	return (0);
@@ -47,32 +45,27 @@ int	handle_keypress(int keysym, t_data *data)
 	return (0);
 }
 
-// ズーム処理 (必須要件)
 int	handle_mouse(int button, int x, int y, t_data *data)
 {
-	double zoom_factor;
-	double center_r;
-	double center_i;
+	double	zoom_factor;
+	double	center_r;
+	double	center_i;
 
 	(void)x;
 	(void)y;
 	zoom_factor = 1.0;
-	if (button == MOUSE_WHEEL_UP) // ズームイン
+	if (button == MOUSE_WHEEL_UP)
 		zoom_factor = 0.9;
-	else if (button == MOUSE_WHEEL_DOWN) // ズームアウト
+	else if (button == MOUSE_WHEEL_DOWN)
 		zoom_factor = 1.1;
 	else
 		return (0);
-
-	// 中心に向かってズームする単純な計算
 	center_r = (data->max_r - data->min_r) / 2 + data->min_r;
 	center_i = (data->max_i - data->min_i) / 2 + data->min_i;
-
 	data->min_r = (data->min_r - center_r) * zoom_factor + center_r;
 	data->max_r = (data->max_r - center_r) * zoom_factor + center_r;
 	data->min_i = (data->min_i - center_i) * zoom_factor + center_i;
 	data->max_i = (data->max_i - center_i) * zoom_factor + center_i;
-
-	render(data); // 再描画
+	render(data);
 	return (0);
 }
