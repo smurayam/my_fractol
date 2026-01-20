@@ -6,7 +6,7 @@
 /*   By: smurayam <smurayam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:21:55 by smurayam          #+#    #+#             */
-/*   Updated: 2026/01/20 20:32:06 by smurayam         ###   ########.fr       */
+/*   Updated: 2026/01/20 20:37:30 by smurayam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,30 @@ static double	map(double unscaled, double new_min, double new_max,
 	return ((new_max - new_min) * (unscaled / old_max) + new_min);
 }
 
+static int	handle_iterations(double z_r, double z_i, double c_r, double c_i)
+{
+	int		iter;
+	double	tmp;
+
+	iter = 0;
+	while (iter < MAX_ITER)
+	{
+		if ((z_r * z_r + z_i * z_i) > 4.0)
+			return (iter);
+		tmp = z_r * z_r - z_i * z_i + c_r;
+		z_i = 2 * z_r * z_i + c_i;
+		z_r = tmp;
+		iter++;
+	}
+	return (MAX_ITER);
+}
+
 static void	calculate_pixel(t_data *data, int x, int y)
 {
 	double	z_r;
 	double	z_i;
 	double	c_r;
 	double	c_i;
-	double	tmp;
 	int		iter;
 
 	if (ft_strncmp(data->name, "julia", 5) == 0)
@@ -49,16 +66,7 @@ static void	calculate_pixel(t_data *data, int x, int y)
 		c_r = map(x, data->min_r, data->max_r, WIDTH);
 		c_i = map(y, data->min_i, data->max_i, HEIGHT);
 	}
-	iter = 0;
-	while (iter < MAX_ITER)
-	{
-		if ((z_r * z_r + z_i * z_i) > 4.0)
-			break ;
-		tmp = z_r * z_r - z_i * z_i + c_r;
-		z_i = 2 * z_r * z_i + c_i;
-		z_r = tmp;
-		iter++;
-	}
+	iter = handle_iterations(z_r, z_i, c_r, c_i);
 	if (iter == MAX_ITER)
 		my_mlx_pixel_put(data, x, y, BLACK);
 	else
