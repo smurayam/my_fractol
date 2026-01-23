@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: smurayam <smurayam@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nnnya <nnnya@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 20:21:55 by smurayam          #+#    #+#             */
-/*   Updated: 2026/01/20 20:37:30 by smurayam         ###   ########.fr       */
+/*   Updated: 2026/01/23 16:36:18 by nnnya            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	dst = data->img.addr + (y * data->img.line_len + x * (data->img.bpp / 8));
 	*(unsigned int *)dst = color;
 }
-
+// doFixthis
 static double	map(double unscaled, double new_min, double new_max,
 		double old_max)
 {
